@@ -11,6 +11,7 @@
 
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using Taleon.Data.Configurations;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -25,6 +26,11 @@
         }
 
         public DbSet<Setting> Settings { get; set; }
+
+        public DbSet<Address> Addresses { get; set; }
+
+        public DbSet<City> Cities { get; set; }
+
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -51,6 +57,9 @@
             base.OnModelCreating(builder);
 
             this.ConfigureUserIdentityRelations(builder);
+
+            builder.ApplyConfiguration(new AddressConfiguration());
+            builder.ApplyConfiguration(new CityConfiguration());
 
             EntityIndexesConfiguration.Configure(builder);
 

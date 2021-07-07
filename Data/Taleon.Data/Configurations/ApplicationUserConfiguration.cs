@@ -1,8 +1,9 @@
 ﻿namespace Taleon.Data.Configurations
 {
-    using Taleon.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+    using Taleon.Data.Models;
 
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

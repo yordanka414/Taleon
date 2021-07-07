@@ -3,10 +3,10 @@ namespace Taleon.Data.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using Microsoft.AspNetCore.Identity;
 
     using Taleon.Data.Common.Models;
-
-    using Microsoft.AspNetCore.Identity;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -17,6 +17,20 @@ namespace Taleon.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
         }
+
+        [Required]
+        [MaxLength(50)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string LastName { get; set; }
+
+        public DateTime? DateOfBirth { get; set; }
+
+        public int AddressId { get; set; }
+
+        public Address Address { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }

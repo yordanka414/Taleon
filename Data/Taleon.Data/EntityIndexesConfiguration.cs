@@ -2,9 +2,9 @@
 {
     using System.Linq;
 
-    using Taleon.Data.Common.Models;
-
     using Microsoft.EntityFrameworkCore;
+
+    using Taleon.Data.Common.Models;
 
     internal static class EntityIndexesConfiguration
     {
