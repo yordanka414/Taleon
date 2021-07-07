@@ -2,13 +2,13 @@
 {
     using System;
     using System.Linq;
-    using System.Threading.Tasks;
-
-    using Taleon.Common;
-    using Taleon.Data.Models;
+    using System.Threading.Tasks; 
 
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
+
+    using Taleon.Common;
+    using Taleon.Data.Models;
 
     internal class RolesSeeder : ISeeder
     {

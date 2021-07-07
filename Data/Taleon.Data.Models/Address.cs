@@ -5,7 +5,6 @@
 
     using Taleon.Data.Common.Models;
 
-
     public class Address : BaseDeletableModel<int>
     {
         [Required]

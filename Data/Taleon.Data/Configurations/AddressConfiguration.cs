@@ -10,7 +10,7 @@
         {
             builder
                  .HasMany(a => a.Users)
-                 .WithOne(x=>x.Address)
+                 .WithOne(x => x.Address)
                  .HasForeignKey(e => e.AddressId)
                  .IsRequired()
                  .OnDelete(DeleteBehavior.Restrict);

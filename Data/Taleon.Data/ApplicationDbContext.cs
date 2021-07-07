@@ -6,12 +6,12 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using Taleon.Data.Common.Models;
-    using Taleon.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+
+    using Taleon.Data.Common.Models;
     using Taleon.Data.Configurations;
+    using Taleon.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -30,7 +30,6 @@
         public DbSet<Address> Addresses { get; set; }
 
         public DbSet<City> Cities { get; set; }
-
 
         public override int SaveChanges() => this.SaveChanges(true);
 

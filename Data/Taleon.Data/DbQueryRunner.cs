@@ -3,9 +3,9 @@
     using System;
     using System.Threading.Tasks;
 
-    using Taleon.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+
+    using Taleon.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {

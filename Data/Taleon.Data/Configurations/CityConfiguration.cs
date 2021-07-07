@@ -2,6 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
     using Taleon.Data.Models;
 
     public class CityConfiguration : IEntityTypeConfiguration<City>
