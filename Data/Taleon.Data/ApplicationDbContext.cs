@@ -25,6 +25,24 @@
         {
         }
 
+        public DbSet<Accident> Accidents { get; set; }
+
+        public DbSet<Penalty> Penalties { get; set; }
+
+        public DbSet<Route> Routes { get; set; }
+
+        public DbSet<FDNumber> FDNumbers { get; set; }
+
+        public DbSet<TimeTable> TimeTables { get; set; }
+
+        public DbSet<Vehicle> Vehicles { get; set; }
+
+        public DbSet<Stop> Stops { get; set; }
+
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<Driver> Drivers { get; set; }
+
         public DbSet<Setting> Settings { get; set; }
 
         public DbSet<Address> Addresses { get; set; }
@@ -54,10 +72,8 @@
         {
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
-
+            builder.Entity<Driver>().ToTable("Drivers");
             this.ConfigureUserIdentityRelations(builder);
-
-            builder.ApplyConfiguration(new AddressConfiguration());
             builder.ApplyConfiguration(new CityConfiguration());
 
             EntityIndexesConfiguration.Configure(builder);
@@ -87,6 +103,8 @@
         {
             builder.Entity<T>().HasQueryFilter(e => !e.IsDeleted);
         }
+
+        // HasQueryFilter( a => !(a is Subclass && a.IsFoo && ((Subclass)a).IsBar) ) await _context.Trucks.IgnoreQueryFilters().ToListAsync());
 
         // Applies configurations
         private void ConfigureUserIdentityRelations(ModelBuilder builder)
