@@ -4,9 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using Taleon.Data.Common.Models;
-
-    public class TimeTable : BaseDeletableModel<int>
+    public class TimeTable
     {
         public DateTime Date { get; set; }
 

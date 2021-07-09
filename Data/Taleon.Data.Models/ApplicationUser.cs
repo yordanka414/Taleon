@@ -9,7 +9,7 @@ namespace Taleon.Data.Models
 
     using Taleon.Data.Common.Models;
 
-    public class ApplicationUser : IdentityUser, IAuditInfo
+    public abstract class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
         public ApplicationUser()
         {
@@ -19,11 +19,19 @@ namespace Taleon.Data.Models
             this.Logins = new HashSet<IdentityUserLogin<string>>();
         }
 
+        [Required]
+        [MaxLength(50)]
         public string FirstName { get; set; }
 
+        [Required]
+        [MaxLength(50)]
         public string LastName { get; set; }
 
         public DateTime? DateOfBirth { get; set; }
+
+        public int AddressId { get; set; }
+
+        public Address Address { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }
@@ -40,7 +48,5 @@ namespace Taleon.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
-
-        public virtual ICollection<Address> Addresses { get; set; } = new HashSet<Address>();
     }
 }

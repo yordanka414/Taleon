@@ -9,11 +9,13 @@
     {
         public void Configure(EntityTypeBuilder<City> city)
         {
-            city.HasMany(a => a.Addresses)
+            city
+                .HasMany(a => a.Addresses)
                 .WithOne(x => x.City)
                 .HasForeignKey(a => a.CityId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }
