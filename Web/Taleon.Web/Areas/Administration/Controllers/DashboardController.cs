@@ -1,9 +1,9 @@
 ﻿namespace Taleon.Web.Areas.Administration.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-
     using Taleon.Services.Data;
     using Taleon.Web.ViewModels.Administration.Dashboard;
+
+    using Microsoft.AspNetCore.Mvc;
 
     public class DashboardController : AdministrationController
     {
