@@ -2,9 +2,9 @@
 {
     using System.Diagnostics;
 
-    using Taleon.Web.ViewModels;
-
     using Microsoft.AspNetCore.Mvc;
+
+    using Taleon.Web.ViewModels;
 
     public class HomeController : BaseController
     {

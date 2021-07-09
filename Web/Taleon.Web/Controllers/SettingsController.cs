@@ -3,12 +3,12 @@
     using System;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
+
     using Taleon.Data.Common.Repositories;
     using Taleon.Data.Models;
     using Taleon.Services.Data;
     using Taleon.Web.ViewModels.Settings;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class SettingsController : BaseController
     {
