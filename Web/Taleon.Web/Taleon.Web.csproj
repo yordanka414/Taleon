@@ -9,14 +9,79 @@
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
   <ItemGroup>
-    <AdditionalFiles Include="..\..\stylecop.json" />
+    <Content Remove="wwwroot\js\bootstrap.min.js" />
+    <Content Remove="wwwroot\js\count-up.min.js" />
+    <Content Remove="wwwroot\js\glightbox.min.js" />
+    <Content Remove="wwwroot\js\imagesloaded.min.js" />
+    <Content Remove="wwwroot\js\isotope.min.js" />
+    <Content Remove="wwwroot\js\jquery-counterup.min.js" />
+    <Content Remove="wwwroot\js\main.js" />
+    <Content Remove="wwwroot\js\service-single.js" />
+    <Content Remove="wwwroot\js\site.js" />
+    <Content Remove="wwwroot\js\site.min.js" />
+    <Content Remove="wwwroot\js\tiny-slider.js" />
+    <Content Remove="wwwroot\js\wow.min.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\animate.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\glightbox.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\LineIcons.2.0.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\main.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\reset.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\responsive.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\count-up.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\glightbox.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\imagesloaded.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\isotope.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\jquery-counterup.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\main.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\service-single.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\fonts\LineIcons.svg" />
+    <None Include="wwwroot\fonts\LineIcons.woff2" />
+    <None Include="wwwroot\images\logo.svg" />
+    <None Include="wwwroot\js\bootstrap.min.js" />
+    <None Include="wwwroot\js\count-up.min.js" />
+    <None Include="wwwroot\js\glightbox.min.js" />
+    <None Include="wwwroot\js\imagesloaded.min.js" />
+    <None Include="wwwroot\js\isotope.min.js" />
+    <None Include="wwwroot\js\jquery-counterup.min.js" />
+    <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\js\service-single.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\js\site.min.js" />
+    <None Include="wwwroot\js\tiny-slider.js" />
+    <None Include="wwwroot\js\wow.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\mail\mail.php" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.7">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.7" />
@@ -39,5 +104,20 @@
     <ProjectReference Include="..\..\Services\Taleon.Services\Taleon.Services.csproj" />
     <ProjectReference Include="..\Taleon.Web.Infrastructure\Taleon.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\Taleon.Web.ViewModels\Taleon.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\css\site.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\css\site.min.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\css\tiny-slider.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 </Project>
