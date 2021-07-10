@@ -1,7 +1,9 @@
 ﻿namespace Taleon.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table("Drivers")]
     public class Driver : ApplicationUser
     {
         public string DrivingLicence { get; set; }

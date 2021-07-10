@@ -3,66 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Taleon.Data;
 
 namespace Taleon.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210709120806_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("DriverFDNumber", b =>
-                {
-                    b.Property<string>("DriversId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("FDNumbersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("DriversId", "FDNumbersId");
-
-                    b.HasIndex("FDNumbersId");
-
-                    b.ToTable("DriverFDNumber");
-                });
-
-            modelBuilder.Entity("DriverVehicle", b =>
-                {
-                    b.Property<string>("DriversId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("VehiclesId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("DriversId", "VehiclesId");
-
-                    b.HasIndex("VehiclesId");
-
-                    b.ToTable("DriverVehicle");
-                });
-
-            modelBuilder.Entity("FDNumberTimeTable", b =>
-                {
-                    b.Property<int>("DatesId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FDNumbersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("DatesId", "FDNumbersId");
-
-                    b.HasIndex("FDNumbersId");
-
-                    b.ToTable("FDNumberTimeTable");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
@@ -166,48 +123,6 @@ namespace Taleon.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.Accident", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateOfAccident")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsInsuranceInvolved")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("VehicleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("VehicleId");
-
-                    b.ToTable("Accidents");
                 });
 
             modelBuilder.Entity("Taleon.Data.Models.Address", b =>
@@ -384,6 +299,8 @@ namespace Taleon.Data.Migrations
 
                     b.HasIndex("AddressId");
 
+                    b.HasIndex("IsDeleted");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -426,120 +343,6 @@ namespace Taleon.Data.Migrations
                     b.ToTable("Cities");
                 });
 
-            modelBuilder.Entity("Taleon.Data.Models.FDNumber", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsInUse")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RouteId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("RouteId");
-
-                    b.ToTable("FDNumbers");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.Penalty", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("AmountToPay")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateOfNotice")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DriverId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsPaid")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PenaltyChargeNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("VehicleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DriverId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("VehicleId");
-
-                    b.ToTable("Penalties");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.Route", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Number")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Routes");
-                });
-
             modelBuilder.Entity("Taleon.Data.Models.Setting", b =>
                 {
                     b.Property<int>("Id")
@@ -570,186 +373,6 @@ namespace Taleon.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Settings");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.Stop", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("RouteId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("TypeOfParsel")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("RouteId");
-
-                    b.ToTable("Stops");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.TimeTable", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DayOfMonth")
-                        .IsRequired()
-                        .HasMaxLength(2)
-                        .HasColumnType("nvarchar(2)");
-
-                    b.Property<string>("DayOfWeek")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Month")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.Property<string>("RouteId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Year")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RouteId");
-
-                    b.ToTable("TimeTable");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.Vehicle", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Make")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("RegistrationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("RegistrationNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Vehicles");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.Driver", b =>
-                {
-                    b.HasBaseType("Taleon.Data.Models.ApplicationUser");
-
-                    b.Property<string>("DrivingLicence")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RouteId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasIndex("RouteId");
-
-                    b.ToTable("Drivers");
-                });
-
-            modelBuilder.Entity("DriverFDNumber", b =>
-                {
-                    b.HasOne("Taleon.Data.Models.Driver", null)
-                        .WithMany()
-                        .HasForeignKey("DriversId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Taleon.Data.Models.FDNumber", null)
-                        .WithMany()
-                        .HasForeignKey("FDNumbersId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DriverVehicle", b =>
-                {
-                    b.HasOne("Taleon.Data.Models.Driver", null)
-                        .WithMany()
-                        .HasForeignKey("DriversId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Taleon.Data.Models.Vehicle", null)
-                        .WithMany()
-                        .HasForeignKey("VehiclesId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("FDNumberTimeTable", b =>
-                {
-                    b.HasOne("Taleon.Data.Models.TimeTable", null)
-                        .WithMany()
-                        .HasForeignKey("DatesId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Taleon.Data.Models.FDNumber", null)
-                        .WithMany()
-                        .HasForeignKey("FDNumbersId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -803,17 +426,6 @@ namespace Taleon.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Taleon.Data.Models.Accident", b =>
-                {
-                    b.HasOne("Taleon.Data.Models.Vehicle", "Vehicle")
-                        .WithMany()
-                        .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Vehicle");
-                });
-
             modelBuilder.Entity("Taleon.Data.Models.Address", b =>
                 {
                     b.HasOne("Taleon.Data.Models.City", "City")
@@ -836,57 +448,6 @@ namespace Taleon.Data.Migrations
                     b.Navigation("Address");
                 });
 
-            modelBuilder.Entity("Taleon.Data.Models.FDNumber", b =>
-                {
-                    b.HasOne("Taleon.Data.Models.Route", null)
-                        .WithMany("FDNumbers")
-                        .HasForeignKey("RouteId");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.Penalty", b =>
-                {
-                    b.HasOne("Taleon.Data.Models.Driver", null)
-                        .WithMany("Penalties")
-                        .HasForeignKey("DriverId");
-
-                    b.HasOne("Taleon.Data.Models.Vehicle", "Vehicle")
-                        .WithMany("Penalties")
-                        .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Vehicle");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.Stop", b =>
-                {
-                    b.HasOne("Taleon.Data.Models.Route", "Route")
-                        .WithMany("Stops")
-                        .HasForeignKey("RouteId");
-
-                    b.Navigation("Route");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.TimeTable", b =>
-                {
-                    b.HasOne("Taleon.Data.Models.Route", null)
-                        .WithMany("Dates")
-                        .HasForeignKey("RouteId");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.Driver", b =>
-                {
-                    b.HasOne("Taleon.Data.Models.ApplicationUser", null)
-                        .WithOne()
-                        .HasForeignKey("Taleon.Data.Models.Driver", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
-                    b.HasOne("Taleon.Data.Models.Route", null)
-                        .WithMany("Drivers")
-                        .HasForeignKey("RouteId");
-                });
-
             modelBuilder.Entity("Taleon.Data.Models.Address", b =>
                 {
                     b.Navigation("Users");
@@ -904,27 +465,6 @@ namespace Taleon.Data.Migrations
             modelBuilder.Entity("Taleon.Data.Models.City", b =>
                 {
                     b.Navigation("Addresses");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.Route", b =>
-                {
-                    b.Navigation("Dates");
-
-                    b.Navigation("Drivers");
-
-                    b.Navigation("FDNumbers");
-
-                    b.Navigation("Stops");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.Vehicle", b =>
-                {
-                    b.Navigation("Penalties");
-                });
-
-            modelBuilder.Entity("Taleon.Data.Models.Driver", b =>
-                {
-                    b.Navigation("Penalties");
                 });
 #pragma warning restore 612, 618
         }

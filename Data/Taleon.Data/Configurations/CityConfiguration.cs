@@ -15,7 +15,6 @@
                 .HasForeignKey(a => a.CityId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
-
         }
     }
 }

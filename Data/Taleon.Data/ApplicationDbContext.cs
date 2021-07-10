@@ -27,6 +27,22 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Penalty> Penalties { get; set; }
+
+        public DbSet<Route> Routes { get; set; }
+
+        public DbSet<Stop> Stops { get; set; }
+
+        public DbSet<TimeTable> TimeTable { get; set; }
+
+        public DbSet<Vehicle> Vehicles { get; set; }
+
+        public DbSet<FDNumber> FDNumbers { get; set; }
+
+        public DbSet<Driver> Drivers { get; set; }
+
+        public DbSet<Accident> Accidents { get; set; }
+
         public DbSet<Address> Addresses { get; set; }
 
         public DbSet<City> Cities { get; set; }

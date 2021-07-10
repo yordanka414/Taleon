@@ -10,8 +10,8 @@ using Taleon.Data;
 namespace Taleon.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210707140420_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210709121237_MoreEntities")]
+    partial class MoreEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
