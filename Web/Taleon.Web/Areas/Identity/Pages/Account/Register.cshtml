@@ -1,4 +1,5 @@
 @page
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
@@ -63,5 +64,13 @@
 </div>
 
 @section Scripts {
+    <script src="https://www.google.com/recaptcha/api.js?render=@this.Configuration["GoogleReCaptcha:Key"]"></script>
+    <script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute('@this.Configuration["GoogleReCaptcha:Key"]', { action: 'contact_form' }).then(function (token) {
+                document.getElementById("RecaptchaValue").value = token;
+            });
+        });
+    </script>
     <partial name="_ValidationScriptsPartial" />
 }
