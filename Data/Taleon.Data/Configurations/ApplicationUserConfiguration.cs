@@ -29,6 +29,12 @@
                 .HasForeignKey(e => e.UserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
+
+            appUser
+                .HasOne<Driver>()
+                .WithOne()
+                .HasForeignKey<Driver>(d => d.ApplicationUserId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

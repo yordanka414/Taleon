@@ -9,7 +9,7 @@ namespace Taleon.Data.Models
 
     using Taleon.Data.Common.Models;
 
-    public class ApplicationUser : IdentityUser, IAuditInfo
+    public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
         public ApplicationUser()
         {

@@ -107,16 +107,7 @@
                                         <a class="page-scroll" href="javascript:void(0)">Portfolio</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll dd-menu collapsed" href="javascript:void(0)"
-                                           data-bs-toggle="collapse" data-bs-target="#submenu-1-1"
-                                           aria-controls="navbarSupportedContent" aria-expanded="false"
-                                           aria-label="Toggle navigation">Pages</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-1">
-                                            <li class="nav-item"><a href="about-us.html">About Us</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="javascript:void(0)">Blog</a>
+                                        <partial name="_LoginPartial.cshtml" />
                                     </li>
                                     <li class="nav-item">
                                         <a class="page-scroll" href="javascript:void(0)">Contact</a>
@@ -138,7 +129,6 @@
 
 
     <div class="container">
-        <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @this.RenderBody()
         </main>
@@ -213,7 +203,7 @@
                             <ul class="list">
                                 <li>
                                     <a href="#">
-                                        <img src="images/gallery1.jpg" alt="#"><i class="lni lni-instagram"></i>
+                                        <img src="~/images/gallery1.jpg" alt="#"><i class="lni lni-instagram"></i>
                                     </a>
                                 </li>
                                 <li>
@@ -292,7 +282,7 @@
     <script src="~/js/imagesloaded.min.js"></script>
     <script src="~/js/isotope.min.js"></script>
     <script src="~/js/main.js"></script>
-    @await this.RenderSectionAsync("Scripts", required: false)
+
     <script type="text/javascript">
         //========= glightbox
         GLightbox({
@@ -360,33 +350,33 @@
             }
         });
 
-        //======== Testimonial Slider
-        //var slider = new tns({
-        //    container: '.testimonial-slider',
-        //    slideby: 'page',
-        //    autoplay: false,
-        //    mousedrag: true,
-        //    gutter: 0,
-        //    items: 1,
-        //    nav: true,
-        //    controls: false,
-        //    controlstext: [
-        //        '<i class="lni lni-arrow-left prev"></i>',
-        //        '<i class="lni lni-arrow-right next"></i>'
-        //    ],
-        //    responsive: {
-        //        1200: {
-        //            items: 2,
-        //        },
-        //        992: {
-        //            items: 1,
-        //        },
-        //        0: {
-        //            items: 1,
-        //        }
+       // Testimonial Slider
+        var slider = new tns({
+            container: '.testimonial-slider',
+            slideby: 'page',
+            autoplay: false,
+            mousedrag: true,
+            gutter: 0,
+            items: 1,
+            nav: true,
+            controls: false,
+            controlstext: [
+                '<i class="lni lni-arrow-left prev"></i>',
+                '<i class="lni lni-arrow-right next"></i>'
+            ],
+            responsive: {
+                1200: {
+                    items: 2,
+                },
+                992: {
+                    items: 1,
+                },
+                0: {
+                    items: 1,
+                }
 
-        //    }
-        //});
+            }
+        });
 
         //============== isotope masonry js with imagesloaded
         imagesLoaded('#container', function () {
@@ -413,6 +403,6 @@
         });
     </script>
 
-
+    @await this.RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
